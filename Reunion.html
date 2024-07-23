@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitud de Reuniones con Gerencias o Jefaturas XYZ</title>
+  <link rel="stylesheet" href="assets/css/Style.css" />
+  <link rel="icon" href="assets/images/image.png" type="image/x-icon" />
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/themes/classic.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/themes/classic.date.css" />
+</head>
+<body class="vista">
+  <nav class="navbar navbar-expand-lg" style="margin-top: 5%">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item" style="margin-right: 25px">
+            <a style="color: white" class="nav-link" href="plataforma.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a style="color: white" class="nav-link" href="Session.html">Salir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h2 style="text-align: center; color: white">
+    Plataforma de Recursos Humanos XYZ
+  </h2>
+  <div class="container text-center">
+    <div style="margin-top: 10px; margin-right: 10%; margin-left: 15px" class="row">
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-3 bg-white p-3" style="border: 2px solid #000; background-color: white; height: 50px; margin-top: 80px;">
+            <p style="margin-top: 12px; font-size: 17px">Solicitar Reunión</p>
+          </div>
+          <div class="col-sm-9 bg-white p-3" style="height: 50px; margin-top: 80px; color: white">
+            <p style="margin-top: 12px; font-size: 19px">
+              <strong>Programa de Incentivos a la Comunicación Interna</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div style="margin-top: 20px;" class="row">
+      <!-- Columna para el select -->
+      <div class="col-sm-5">
+        <div class="row mb-3">
+          <div class="col-sm-12 bg-white" style="border: 1px solid #000; border-radius: 8px; padding: 10px; background-color: aliceblue;">
+            <div class="tituloContent" style="font-family: Arial, sans-serif; font-size: 8pt; font-weight: bold; margin-top: 10px;">
+              Solicita Reunión
+            </div>
+            <div class="subTituloContent">&nbsp;</div>
+            <div id="divCbReunion">
+              <select id="cbReunion" class="form-control">
+                <option value="0">Seleccione..</option>
+                <option value="1">Gerencia General</option>
+                <option value="2">Jefatura Departamento</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna para el campo de fecha -->
+      <div class="col-sm-4" style="margin-left: 5px;">
+        <div class="row mb-3">
+          <div class="col-sm-12 bg-white" style="border: 1px solid #000; border-radius: 8px; padding: 14px; background-color: aliceblue;">
+            <label for="input_from_desde" style="font-family: Arial, sans-serif; font-size: 8pt; font-weight: bold; margin-top: 10px;">
+              Seleccione Día
+            </label>
+            <input runat="server" class="form-control" id="input_from_desde" placeholder="aaaa/mm/dd" style="height: 32px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna para el botón Solicitar -->
+      <div class="col-sm-2" style="margin-top: 25px;">
+        <div class="row mb-3">
+          <div class="col-sm-12" style="text-align: center;">
+            <button id="btnProyectos" style="width: 100%;" type="button" class="btn btn-primary">
+              Solicitar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+  class="modal fade"
+  style="text-align: center; margin-left: 5%; margin-bottom: 5%"
+  id="modalMensajeExito"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalMensajeExitoLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalMensajeExitoLabel">
+         Solicitud de Reunión
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div style="text-align: left;" class="modal-body">
+        <p style="text-align: center;">Su Solicitud de Reunion Fue enviada.</p>
+        <p style="text-align: center;">Detalles:</p>
+        <ul>
+          <li>
+            <strong>Selección:</strong>
+            <span id="modalSelectedValue"></span>
+          </li>
+          <li>
+            <strong>Fecha de Inicio:</strong>
+            <span id="modalFechaInicio"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="text-align: center; margin-top: 10%;">
+  <button id="btnEstado2" style="width: 15%; margin-top: 20px;" type="button" class="btn btn-primary">
+      Volver
+  </button>
+</div> 
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/picker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/picker.date.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/translations/es_ES.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <script src="assets/js/Reunion.js"></script>
+  </body>
+</html>

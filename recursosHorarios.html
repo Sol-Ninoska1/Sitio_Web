@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Recursos Humanos y Horarios</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css"
+    />
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+
+    <!-- Chosen -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+
+    <!-- Pickadate -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/themes/classic.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/themes/classic.date.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/picker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/picker.date.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.6.4/translations/es_ES.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/Style.css" />
+  </head>
+  <body class="vista">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item" style="margin-right: 25px">
+              <a style="color: white" class="nav-link" href="plataforma.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a style="color: white" class="nav-link" href="Session.html"
+                >Salir</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h2 style="text-align: center; color: white">
+      Plataforma de Recursos Humanos XYZ
+    </h2>
+    <div class="container text-center">
+      <div style="margin-top: 20px" class="row">
+        <!-- Primera columna para los dos primeros elementos -->
+        <div class="col-sm-4">
+          <div class="row mb-3">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: aliceblue;
+              "
+            >
+              <div
+                class="tituloContent"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+              >
+                Seleccione una Opción de Gestión
+              </div>
+              <div class="subTituloContent">&nbsp;</div>
+              <div id="divCbSelectRecusos">
+                <select id="cbSelectRecursos" class="form-control">
+                  <option value="0">Seleccione..</option>
+                  <option value="1">Registro de Asistencia</option>
+                  <option value="2">Extra - Tiempo</option>
+                  <option value="3">Proyección de Turnos</option>
+                  <option value="4">Solicitud de Turnos Especiales</option>
+                  <option value="5">Reporte de Inasistencia</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3" id="rowCbAsistencia">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: aliceblue;
+                margin-top: 3px;
+              "
+            >
+              <div
+                class="tituloContent"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+              >
+                Seleccione Asistencia
+              </div>
+              <div class="subTituloContent">&nbsp;</div>
+              <div id="divCbAsistencia">
+                <select id="cbAsistencia" class="form-control">
+                  <option value="0">Seleccione..</option>
+                  <option value="1">Registro Mensual</option>
+                  <option value="2">Entrada</option>
+                  <option value="3">Salida</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3" id="rowCbPerido">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: aliceblue;
+                margin-top: 3px;
+              "
+            >
+              <div
+                class="tituloContent"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+              >
+                Seleccione Turno/Período
+              </div>
+              <div class="subTituloContent">&nbsp;</div>
+              <div id="divCbPeriodo">
+                <select id="cbPeriodo" class="form-control">
+                  <option value="0">Seleccione..</option>
+                  <option value="1">Mensual</option>
+                  <option value="2">Trimestral</option>
+                  <option value="3">Semanal</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3" id="rowCbTurno">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: aliceblue;
+                margin-top: 3px;
+              "
+            >
+              <div
+                class="tituloContent"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+              >
+                Seleccione Turno Especial
+              </div>
+              <div class="subTituloContent">&nbsp;</div>
+              <div id="divCbTurno">
+                <select id="cbTurno" class="form-control">
+                  <option value="0">Seleccione..</option>
+                  <option value="1">Diurno</option>
+                  <option value="2">Vespertino</option>
+                  <option value="3">Fin de Semana</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3" id="rowCbTipo">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: aliceblue;
+                margin-top: 3px;
+              "
+            >
+              <div
+                class="tituloContent"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+              >
+                Seleccione Tipo
+              </div>
+              <div class="subTituloContent">&nbsp;</div>
+              <div id="divCbTipo">
+                <select id="cbTipo" class="form-control">
+                  <option value="0">Seleccione..</option>
+                  <option value="1">Con Licencia Manual</option>
+                  <option value="2">Con Licencia Electronica</option>
+                  <option value="3">Sin Licencia</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3" id="rowCbDias">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: aliceblue;
+                margin-top: 3px;
+              "
+            >
+              <div
+                class="tituloContent"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+              >
+                Seleccione Cantidad de Días
+              </div>
+              <div class="subTituloContent">&nbsp;</div>
+              <div id="divCbDias">
+                <select id="cbDias" class="form-control">
+                  <option value="0">Seleccione..</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Segunda columna para los dos siguientes elementos -->
+        <div style="margin-left: 15px" class="col-sm-4">
+          <div class="row mb-3">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 14px;
+                background-color: aliceblue;
+              "
+            >
+              <label
+                for="input_from_desde"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+                >Fecha Inicio</label
+              >
+              <input
+                runat="server"
+                class="form-control"
+                id="input_from_desde"
+                placeholder="aaaa/mm/dd"
+                style="height: 32px"
+              />
+            </div>
+          </div>
+          <div class="row" id="rowCbFecha">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 14px;
+                background-color: aliceblue;
+                margin-top: 3px;
+              "
+            >
+              <label
+                for="input_to_hasta"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+                >Fecha Termino</label
+              >
+              <input
+                runat="server"
+                class="form-control"
+                id="input_to_hasta"
+                placeholder="aaaa/mm/dd"
+                style="height: 32px"
+              />
+            </div>
+          </div>
+
+          <div class="row" id="rowCbDesc">
+            <div
+              class="col-sm-12 bg-white"
+              style="
+                border: 1px solid #000;
+                border-radius: 8px;
+                padding: 14px;
+                background-color: aliceblue;
+                margin-top: 3px;
+              "
+            >
+              <label
+                for="input_to_hasta"
+                style="
+                  font-family: Arial, sans-serif;
+                  font-size: 8pt;
+                  font-weight: bold;
+                  margin-top: 10px;
+                "
+                >Comentarios</label
+              >
+              <textarea
+                class="form-control" id="cbComent"
+                style="width: 100%"
+                placeholder="Ej: Problema de Transporte"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <!-- Tercera columna para la imagen -->
+        <div
+          style="margin-right: -15px"
+          class="col-sm-4 d-flex align-items-center justify-content-center"
+        >
+          <img
+            style="height: 190px"
+            src="assets/images/123.png"
+            alt=""
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="row rowseparator contObjetos"
+      style="margin-left: 15px; margin-right: 15px; margin-top: 20px"
+    >
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table id="myTable" class="display table">
+            <thead>
+              <tr>
+                <th>Nombre Cargo</th>
+                <th>Edad</th>
+                <th>Departamento</th>
+                <th>Jornada</th>
+                <th>Empleado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nombre Apellido\Supervisor & CEO</td>
+                <td>40</td>
+                <td>RRHH</td>
+                <td>40 hrs</td>
+                <td>(0)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center">
+      <button
+        id="btnRevisarAsistencia"
+        style="width: 22%; margin-top: 20px; display: none"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Enviar
+      </button>
+    </div>
+
+    <div
+      style="margin-top: 5px; background-color: aliceblue; display: none"
+      id="tablaResultados"
+      class="mt-3"
+    ></div>
+    <div
+      style="text-align: center; margin-left: 30%; margin-bottom: 10%"
+      id="modalExtraTiempo"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Cálculo de Tiempo Extra</h4>
+          </div>
+          <div class="modal-body">
+            <div id="extraTiempoContent"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Mensaje de Éxito Turno -->
+    <div
+      class="modal fade"
+      style="text-align: center; margin-left: 30%; margin-bottom: 10%"
+      id="modalMensajeExito"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modalMensajeExitoLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalMensajeExitoLabel">
+              Proyección Enviada con Éxito
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div style="text-align: left;" class="modal-body">
+            <p style="text-align: center;">Su proyección fue enviada con éxito.</p>
+            <p style="text-align: center;">Detalles de la proyección:</p>
+            <ul>
+              <li>
+                <strong>Selección:</strong>
+                <span id="modalSelectedValue"></span>
+              </li>
+              <li>
+                <strong>Fecha de Inicio:</strong>
+                <span id="modalFechaInicio"></span>
+              </li>
+              <li>
+                <strong>Proyección Seleccionada:</strong>
+                <span id="modalSelectedProyeccion"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal de Mensaje de Éxito -->
+    <div
+    class="modal fade"
+    style="text-align: center; margin-left: 30%; margin-bottom: 10%"
+    id="modalEspecialTurno"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modalMensajeExitoLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalMensajeExitoLabel">
+              Solicitud de Turnos Especiales
+            </h5>
+            <p>Enviada con éxito.</p>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div style="text-align: left;" class="modal-body">
+            <p style="text-align: center;">Detalles de la Solicitud:</p>
+            <ul>
+              <li>
+                <strong>Turno Especial:</strong>
+                <span id="modalSelectedTurno"></span>
+              </li>
+              <li>
+                <strong>Fecha:</strong> <span id="modalFechaInicioTurno"></span>
+              </li>
+              <li>
+                <strong>Selección:</strong>
+                <span id="modalSelectedValueTurno"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+    class="modal fade"
+    style="text-align: center; margin-left: 30%; margin-bottom: 10%"
+    id="modalEspecialInasistecia"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modalMensajeExitoLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalMensajeExitoLabel">
+             Inasistencia
+            </h5>
+            <p>Reportada con éxito.</p>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div style="text-align: left;" class="modal-body">
+            <p style="text-align: center;">Detalles:</p>
+            <ul>
+              <li>
+                <strong>Selección:</strong>
+                <span id="modalSelected"></span>
+              </li>
+              <li>
+                <strong>Fecha:</strong> <span id="modalFechaInicioInasistencia"></span>
+              </li>
+              <li>
+                <strong>Tipo:</strong>
+                <span id="modalSelectedValueTipo"></span>
+              </li>
+              <li>
+                <strong>Cantidad de Días:</strong>
+                <span id="modalSelectedValueDias"></span>
+              </li>
+              <li>
+                <strong>Comentario:</strong>
+                <span id="modalComentario"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <script src="assets/js/Script.js"></script>
+  </body>
+</html>

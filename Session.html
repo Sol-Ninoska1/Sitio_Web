@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XYZ</title>
+    <link rel="stylesheet" href="Style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="icon" href="assets/images/image.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css"
+    />
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h2 style="color: white; text-align: center">Bienvenidos</h2>
+    <h2 style="color: white; text-align: center">
+      Plataforma de Recursos Humanos XYZ
+    </h2>
+
+    <div
+      style="width: 200%; margin-top: -100%"
+      class="modal-dialog text-center mt-5 mb-5"
+    >
+      <div class="col-sm-8 main-section">
+        <div class="modal-content py-3">
+          <div class="col-12 user-img">
+            <img src="assets/images/image.png" alt="Imagen de perfil" />
+          </div>
+          <h6>
+            Acceso a la Plataforma <br />
+            de Recursos Humanos
+          </h6>
+          <form id="loginForm" class="col-12" method="post" runat="server">
+            <div style="text-align: left" class="form-group">
+              <label for="txtNombre"><strong>Usuario:</strong></label>
+              <input
+                runat="server"
+                id="txtUsuario"
+                class="form-control"
+                placeholder="Ingrese Nombre"
+              />
+            </div>
+            <div style="text-align: left" class="form-group" id="user-group">
+              <label for="txtCorreo"><strong>Contraseña:</strong></label>
+              <input
+                runat="server"
+                id="txtClave"
+                class="form-control"
+                placeholder="Ingrese Contraseña"
+                value=""
+              />
+            </div>
+            <button style="width: 50%" type="submit" class="btn btn-primary">
+              Enviar
+            </button>
+          </form>
+        </div>
+        <div id="mensaje"></div>
+      </div>
+    </div>
+    <script src="assets/js/Script.js"></script>
+  </body>
+</html>
